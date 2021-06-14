@@ -6,7 +6,7 @@ function changeVideoSettings(settings, name) {
 	if (name !== 'core-embed/youtube') {
 		return settings;
 	}
-	settings.category = 'crispybacon';
+	settings.category = 'mokilla';
 	settings.icon = icon;
 	settings.attributes.protetto = {
 		type: 'bool',
@@ -59,12 +59,12 @@ var modifyVideoEdit = wp.compose.createHigherOrderComponent(function (BlockEdit)
 
 /*wp.hooks.addFilter(
 	'blocks.registerBlockType',
-	'cbwpt/crispybacon-blocks',
+	'mkwp/mokilla-blocks',
 	changeVideoSettings
 );
 
 wp.hooks.addFilter(
 	'editor.BlockEdit',
-	'cbwpt/crispybacon-blocks',
+	'mkwp/mokilla-blocks',
 	modifyVideoEdit
 );*/

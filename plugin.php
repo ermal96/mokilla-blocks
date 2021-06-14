@@ -1,10 +1,10 @@
 <?php
 /**
  * Plugin Name:     Mokilla Blocks
- * Plugin URI:      www.crispybacon.it
+ * Plugin URI:      v.serxhio@gmail.com
  * Description:     
  * Author:          Serxhio Vrapi
- * Author URI:      www.crispybacon.it
+ * Author URI:      v.serxhio@gmail.com
  * Text Domain:     mokilla-blocks
  * Domain Path:     /src/languages
  * Version:         1.0.0
@@ -26,6 +26,5 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 require_once plugin_dir_path( __FILE__ ) . '/vendor/autoload.php';
 
-( new Admin_Page() )->init();
 
 new Initializer();

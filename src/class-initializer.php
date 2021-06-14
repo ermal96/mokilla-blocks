@@ -2,7 +2,7 @@
 /**
  * Blocks initializer
  *
- * @link       www.crispybacon.it
+ * @link       v.serxhio@gmail.com
  * @since      1.0.0
  *
  * @package    Mokilla_Blocks
@@ -34,7 +34,6 @@ class Initializer {
 		add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_public_script' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_assets' ) );
-		//add_filter( 'allowed_block_types', array( $this, 'allowed_block_types' ), 11, 2 );
 		add_filter( 'block_categories', array( $this, 'add_category' ), 11, 2 );
 
 		//add_action( 'init', array( $this, 'template_to_posts' ) );
@@ -87,7 +86,7 @@ class Initializer {
 		$relative_path = 'dist/blocks.style.build.css';
 		if ( file_exists( plugin_dir_path( __DIR__ ) . $relative_path ) && filesize( plugin_dir_path( __DIR__ ) . $relative_path ) > 0 ) {
 			wp_enqueue_style(
-				'crispybacon-blocks-style',
+				'mokilla-blocks-style',
 				plugins_url( $relative_path, dirname( __FILE__ ) ),
 				array( 'wp-blocks' ),
 				filemtime( plugin_dir_path( __DIR__ ) . $relative_path )
@@ -133,45 +132,6 @@ class Initializer {
 			);
 		}
 	}
-
-	/**
-	 * Server side whitelist blocks to be displayed in the inserter.
-	 * The server side whitelist is the same list of the JS whitelist, but it also
-	 * serves different blocks for different post types.
-	 *
-	 * IMPORTANT: add the complete name of the blocks created in this package,
-	 * or you won't find them in the inserter!
-	 *
-	 * @param array   $allowed_block_types List passed by the filter.
-	 * @param WP_Post $post The post.
-	 *
-	 * @return array
-	 */
-	public function allowed_block_types( $allowed_block_types, $post ) {
-		// Add eventual new post types.
-		$post_types = array(
-			'post',
-			'page',
-		);
-		// Under this line you don't need to modify.
-		$blocks      = array();
-		$core_blocks = get_option( 'mokilla-block-whitelist' );
-
-		foreach ( $post_types as $post_type ) {
-			if ( isset( $core_blocks[ $post_type ] ) ) {
-				$core_blocks_keys = array_keys( $core_blocks[ $post_type ] );
-
-				$blocks[ $post_type ] = $core_blocks_keys;
-			}
-		}
-
-		if ( isset( $blocks[ $post->post_type ] ) ) {
-			return $blocks[ $post->post_type ];
-		}
-
-		return $allowed_block_types;
-	}
-
 	/**
 	 * Create a custom category for the blocks
 	 *
@@ -185,7 +145,7 @@ class Initializer {
 			$categories,
 			array(
 				array(
-					'slug'  => 'crispybacon',
+					'slug'  => 'mokilla',
 					'title' => 'Mokilla Blocks',
 				),
 			)

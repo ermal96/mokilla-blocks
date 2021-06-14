@@ -7,7 +7,7 @@ registerBlockType('mokilla-blocks/block-01', {
 	title: 'Titolo 01',
 	description: 'Descrizione',
 	icon: icon,
-	category: 'crispybacon',
+	category: 'mokilla',
 	attributes: {
 	},
 
