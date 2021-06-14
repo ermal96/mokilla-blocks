@@ -119,7 +119,6 @@ class Initializer {
 			array(
 				'ajaxurl'   => admin_url( 'admin-ajax.php' ),
 				'security'  => wp_create_nonce( self::NONCE_ACTION ),
-				'whitelist' => $this->get_whitelisted_blocks( $current_screen->post_type ),
 			)
 		);
 		$relative_path = 'dist/blocks.editor.build.css';
@@ -164,32 +163,6 @@ class Initializer {
 		// $post_type_object->template_lock = 'all';
 	}
 
-	/**
-	 * Get the list of whitelisted blocks
-	 *
-	 * @param string $post_type The post type blocks to return.
-	 *
-	 * @return array|string
-	 */
-	protected function get_whitelisted_blocks( $post_type ) {
-		$input = get_option( Admin_Page::OPTION_NAME, false );
-		if ( false === $input ) {
-			return array();
-		}
-		$whitelist = array();
-		foreach ( $input as $type => $list ) {
-			if ( $type !== $post_type ) {
-				continue;
-			}
-			foreach ( $list as $slug => $status ) {
-				if ( 'on' === $status ) {
-					$whitelist[] = $slug;
-				}
-			}
-		}
-
-		return wp_json_encode( $whitelist );
-	}
 
 }
 
