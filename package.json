@@ -1,0 +1,22 @@
+{
+  "name": "mokilla-blocks",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm-run-all --parallel watch:*",
+    "build": "npm-run-all build:*",
+    "eject": "cgb-scripts eject",
+    "build:public": "touch dist/public-scripts.min.js && concat -o dist/public-scripts.min.js src/custom-blocks/*/public/*.js",
+    "build:public-uglify": "uglifyjs dist/public-scripts.min.js --compress --output dist/public-scripts.min.js",
+    "build:editor": "cgb-scripts build",
+    "watch:editor": "cgb-scripts start",
+    "watch:public": "onchange 'src/custom-blocks/*/public/*.js' -- npm run build:public"
+  },
+  "dependencies": {
+    "cgb-scripts": "*",
+    "npm-run-all": "^4.1.3",
+    "concat": "1.0.3",
+    "onchange": "^4.0.0",
+    "uglify-js": "3.3.27"
+  }
+}

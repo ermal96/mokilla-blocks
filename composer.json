@@ -1,0 +1,21 @@
+{
+	"name": "mokilla/mokilla-blocks",
+	"description": "",
+	"type": "wordpress-plugin",
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+	"autoload": {
+		"psr-4": {
+			"mokilla\\mokilla_blocks\\": "",
+			"mokilla\\mokilla_blocks\\Model\\": "/model",
+			"mokilla\\mokilla_blocks\\Blocks\\": "/src",
+			"mokilla\\mokilla_blocks\\Blocks\\Custom\\": "/src/custom-blocks"
+		}
+	},
+	"require": {
+		"php": ">=7.0.0"
+	},
+	"config": {
+		"optimize-autoloader": true
+	}
+}
